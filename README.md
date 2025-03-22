@@ -1,5 +1,3 @@
-# siri-anusha-google-Books-search-SPA
-
 # Google Books Search SPA
 
 ## Overview:
@@ -45,12 +43,12 @@ This project is a Single Page Application(SPA) built using Angular, HTML, CSS, a
 
 - Clone the repository to your local machine using the following command:
 ```bash
-    https://github.com/2164-ServiceNow/siri-anusha-google-Books-search-SPA.git
+    https://github.com/B-Anushaa/Google-Book-Search.git
 ```
 4. Navigate to the Project Directory
 - Move into the project folder using:
 ```bash
-    cd  .\siri-anusha-google-Books-search-SPA\
+    cd  Google-Book-Search
 ```
 5. Install Project Dependencies
 - Install all the required dependencies by running:
@@ -67,6 +65,5 @@ This project is a Single Page Application(SPA) built using Angular, HTML, CSS, a
 - By default, the application will be available at http://localhost:4200/. Open this link in your browser to view your application.
 
 
-## Contributors:
-- Anusha - [Anusha B](https://github.com/B-Anushaa)
-- SiriPriya - [SiriPriya Purimetla](https://github.com/SiripriyaP)
+
+
