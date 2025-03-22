@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Bash!</title>
+</head>
+<body>
+    <div class="book-details-container" ng-if="!loading">
+        <h1>{{ book.title }}</h1>
+        <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}">
+        <p><strong>Authors:</strong> {{ book.authors }}</p>
+        <p><strong>Description:</strong> {{ book.description }}</p>
+    </div>
+    <div ng-if="loading">Loading book details...</div>
+    
+    
+    <div ng-if="loading">Loading book details...</div>
+
+
+    </div> 
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="BookApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Bash!</title>
+    <base href="/">
+    <link rel="stylesheet" href="/app/css/navbar.css">
+    <!-- AngularJS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="/app/assests/images/book.png" alt="Book Bash Logo">
+            <h2 class = "logo-sub">Book Bash</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <a href="/books">Best Sellers</a>
+            
+        </ul>
+    </nav>
+   <h1>Welcome to Book Bash!</h1>
+    <div ng-view>
+    <div ng-controller="mainController"> 
+        <span>{{message}}</span>
+    </div>
+    <!-- Application Scripts -->
+    <script src="/app/app.js"></script>
+    <script src="/app/controller/mainController.js"></script>
+    <script src="/app/controller/viewBooksController.js"></script>
+    <script src="/app/controller/bookDetailsController.js"></script>
+    <script src="/app/service/bookService.js"></script>
+    <script src="/app/controller/bookSearchController.js"></script>
+    <script src="/app/controller/sortController.js"></script>
+    </div>
+</body>
+</html>

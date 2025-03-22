@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel ="stylesheet" href ="app/css/home.css">
+    
+</head>
+<body>
+   
+
+    <div class="book-container">
+        <!--<h1 class="page-title">Sort Books</h1>-->
+
+        <!-- Dropdown for sorting -->
+        <label for="sortOrder">Sort By:</label>
+        <select id="sortOrder" ng-model="selectedSortOrder" ng-change="fetchBooks()">
+            <option value="relevance">Relevance</option>
+            <option value="newest">Newest</option>
+        </select>
+
+        <div ng-if="loading" class="loading-message">Loading Books...</div>
+
+        <div class="book-grid">
+            <!-- Display sorted books -->
+            <div class="book-card" ng-repeat="book in books">
+                <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}" class="book-thumbnail">
+                <h2 class="book-title">{{ book.title }}</h2>
+                <p class="book-authors">{{ book.authors }}</p>
+                <p class="book-date"><strong>Published:</strong> {{ book.publishedDate }}</p>
+            </div>
+        </div>
+    <div ng-controller="bookSearchController">
+      
+        <input type="text" ng-model="searchQuery" placeholder="Enter Book name" />
+        <button ng-click="searchBooks()">Search</button>
+        <!-- <button ng-click="searchforBooks()">Search1</button> -->
+    
+        <div ng-if="books && books.length > 0" class = "book-grid">
+            <div ng-repeat="book in books" class="book-card">
+                <h3>{{ book.volumeInfo.title }}</h3>
+                <img 
+                    ng-src="{{ book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'placeholder.jpg' }}" 
+                    alt="{{ book.volumeInfo.title }}" 
+                    class="book-thumbnail">
+                <p><strong>Author(s):</strong> {{ book.volumeInfo.authors.join(', ') }}</p>
+                <p><strong>Publisher:</strong> {{ book.volumeInfo.publisher }}</p>
+                <!--<p><strong>Published Date:</strong> {{ book.volumeInfo.publishedDate }}</p>
+                <p><strong>Category:</strong> {{ book.volumeInfo.categories ? book.volumeInfo.categories.join(', ') : 'N/A' }}</p>-->
+                <p><strong>Description:</strong> {{ book.volumeInfo.description || 'No description available.' }}</p>
+                
+                <!--<p><strong>Page Count:</strong> {{ book.volumeInfo.pageCount }}</p>
+                <p><strong>Language:</strong> {{ book.volumeInfo.language | uppercase }}</p>-->
+                <p>
+                    <a href="{{ book.volumeInfo.previewLink }}" target="_blank">Preview</a></p>
+                    <a ng-href="{{book.saleInfo.buyLink}}" target="_blank">Buy this book</a>
+            </div>
+        </div>
+        <div ng-if="!books || books.length === 0">
+            <!-- <p>Search Here!</p> -->
+        </div>
+    </div>
+    
+
+    <!-- <div class="sorting-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" ng-model="selectedSort" ng-change="updateSorting()">
+            <option ng-repeat="option in sortOptions" value="{{ option.value }}">{{ option.label }}</option>
+        </select>
+    </div> -->
+    
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/service/bookService.js"></script>
+    <script src="/app/controller/bookSearchController.js"></script>
+
+</body>
+</html> 

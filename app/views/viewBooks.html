@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Books</title>
+    <link rel = "stylesheet" href="/app/css/viewBooks.css">
+</head>
+<body>
+    <div class="book-container">
+        <!-- <h1 class="page-title">All Books</h1> -->
+        <div class="book-container">
+            <!-- <h1 class="page-title">Sort Books</h1> -->
+    
+            <!-- Dropdown for sorting -->
+            <label for="sortOrder">Sort By:</label>
+            <select id="sortOrder" ng-model="selectedSortOrder" ng-change="fetchBooks()">
+                <option value="relevance">Relevance</option>
+                <option value="newest">Newest</option>
+            </select>
+    
+            <div ng-if="loading" class="loading-message">Loading Books...</div>
+    
+            <!-- <div class="book-grid">
+                <!-- Display sorted books -->
+                <!-- <div class="book-card" ng-repeat="book in books">
+                    <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}" class="book-thumbnail">
+                    <h2 class="book-title">{{ book.title }}</h2>
+                    <p class="book-authors">{{ book.authors }}</p>
+                    <p class="book-date"><strong>Published:</strong> {{ book.publishedDate }}</p>
+                </div>
+            </div> --> -->
+        <div ng-if="loading" class="loading-message">Loading Books...</div>
+        <div class="book-grid">
+            <!-- Corrected the bindings to match the mapped structure -->
+            <div class="book-card" ng-repeat="book in books" ng-click="goToDetails(book.title)">
+                <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}" class="book-thumbnail">
+                <h2 class="book-title">{{ book.title }}</h2>
+                <p class="book-authors">{{ book.authors }}</p>
+            </div>
+            
+        </div>
+
+        <div class="pagination-controls">
+            <button ng-click="prevPage()" ng-disabled="currentPage === 1">Previous</button>
+            <button ng-click="nextPage()">Next</button>
+        </div>
+
+        <p>Page {{ currentPage }}</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="/app/controller/viewBooksController.js"></script>
+</body>
+</html>
